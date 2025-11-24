@@ -135,4 +135,49 @@ document.addEventListener('DOMContentLoaded', () => {
             default: return '';
         }
     }
+
+    function updateMemoryDisplay() {
+        memoryValueDisplay.textContent = String(memory).substring(0, 15);
+    }
+    
+    function handleMemory(action) {
+        const currentValue = parseFloat(currentInput);
+        
+        if (action === 'm-clear') {
+            memory = 0;
+        } else if (action === 'm-recall') {
+            currentInput = String(memory);
+            waitingForSecondOperand = false;
+            updateDisplay();
+        } else if (action === 'm-plus') {
+            memory += currentValue;
+        } else if (action === 'm-minus') {
+            memory -= currentValue;
+        }
+        updateMemoryDisplay();
+    }
+
+    buttons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            const { value } = event.target.dataset;
+            const { action } = event.target.dataset;
+
+            if (value) {
+                inputDigit(value);
+            } else if (action === 'decimal') {
+                inputDecimal('.');
+            } else if (action === 'clear') {
+                clear();
+            } else if (action === 'clear-entry') {
+                clearEntry();
+            } else if (action === 'calculate') {
+                handleEquals();
+            } else if (action && (action === 'add' || action === 'subtract' || action === 'multiply' || action === 'divide')) {
+                handleOperator(action);
+            } else if (action && (action.startsWith('m-'))) {
+                handleMemory(action);
+            }
+        });
+    });
+
             
