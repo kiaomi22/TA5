@@ -36,3 +36,9 @@ h1 {
     padding: 0 10px;
     box-sizing: border-box;
 }
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
