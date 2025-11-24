@@ -79,4 +79,19 @@ document.addEventListener('DOMContentLoaded', () => {
         operator = nextOperator;
         updateDisplay();
     }
+    function calculate(first, second, op) {
+        if (op === 'add') {
+            return first + second;
+        } else if (op === 'subtract') {
+            return first - second;
+        } else if (op === 'multiply') {
+            return first * second;
+        } else if (op === 'divide') {
+            if (second === 0) {
+                return 'Error'; 
+            }
+            return first / second;
+        }
+        return second;
+    }
             
