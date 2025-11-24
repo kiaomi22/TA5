@@ -83,3 +83,28 @@ h1 {
     text-align: left;
     padding-left: 35px;
 }
+
+.history-container {
+    margin-bottom: 15px;
+    padding: 10px;
+    background: #eee;
+    border-radius: 5px;
+}
+
+#historyList {
+    list-style: none;
+    padding: 0;
+    margin: 5px 0 0 0;
+    font-size: 0.9em;
+    color: #555;
+    max-height: 100px;
+    overflow-y: auto;
+}
+
+.memory-display {
+    text-align: right;
+    margin-bottom: 10px;
+    font-size: 0.9em;
+    color: #007bff;
+    font-weight: bold;
+}
