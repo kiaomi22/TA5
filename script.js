@@ -40,3 +40,43 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     updateDisplay();
 }
+    function inputDecimal(dot) {
+        if (waitingForSecondOperand === true) {
+            currentInput = '0.';
+            waitingForSecondOperand = false;
+            updateDisplay();
+            return;
+        }
+        if (!currentInput.includes(dot)) {
+            currentInput += dot;
+        }
+        updateDisplay();
+    }
+
+    function handleOperator(nextOperator) {
+        const inputValue = parseFloat(currentInput);
+
+        if (operator && waitingForSecondOperand) {
+            operator = nextOperator;
+            return;
+        }
+
+        if (firstOperand === null) {
+            firstOperand = inputValue;
+        } else if (operator) {
+            const result = calculate(firstOperand, inputValue, operator);
+            if (result === 'Error') {
+                currentInput = 'Error';
+                firstOperand = null;
+                operator = null;
+            } else {
+                currentInput = String(result);
+                firstOperand = result;
+            }
+        }
+
+        waitingForSecondOperand = true;
+        operator = nextOperator;
+        updateDisplay();
+    }
+            
