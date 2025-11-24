@@ -94,4 +94,45 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         return second;
     }
+    function clear() {
+        currentInput = '0';
+        firstOperand = null;
+        operator = null;
+        waitingForSecondOperand = false;
+        updateDisplay();
+    }
+    function clearEntry() {
+        currentInput = '0';
+        updateDisplay();
+    }
+    function handleEquals() {
+        if (!operator || waitingForSecondOperand) {
+            return;
+        }
+        
+        const secondOperand = parseFloat(currentInput);
+        const result = calculate(firstOperand, secondOperand, operator);
+        const calculationString = `${firstOperand} ${getOperatorSymbol(operator)} ${secondOperand} = ${result}`;
+
+        if (result === 'Error') {
+             currentInput = 'Error';
+        } else {
+            currentInput = String(result);
+            updateHistory(calculationString); 
+        } 
+
+        firstOperand = null;
+        operator = null;
+        waitingForSecondOperand = false;
+        updateDisplay();
+    }
+    function getOperatorSymbol(op) {
+        switch (op) {
+            case 'add': return '+';
+            case 'subtract': return '-';
+            case 'multiply': return '×';
+            case 'divide': return '÷';
+            default: return '';
+        }
+    }
             
