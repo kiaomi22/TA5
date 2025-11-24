@@ -180,4 +180,31 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    document.addEventListener('keydown', (event) => {
+        const key = event.key;
+        
+        if (/[0-9]/.test(key)) { 
+            inputDigit(key);
+        } else if (key === '.') { 
+            inputDecimal(key);
+        } else if (key === '+' || key === '-' || key === '*' || key === '/') {
+            event.preventDefault(); 
+            let action;
+            if (key === '+') action = 'add';
+            else if (key === '-') action = 'subtract';
+            else if (key === '*') action = 'multiply';
+            else if (key === '/') action = 'divide';
+            handleOperator(action);
+        } else if (key === '=' || key === 'Enter') {
+            event.preventDefault();
+            handleEquals();
+        } else if (key === 'c' || key === 'C') {
+            clear();
+        }
+    });
+
+    updateDisplay();
+    updateMemoryDisplay();
+});
+
             
