@@ -16,7 +16,7 @@ h1 {
 
 .calculator-app {
     width: 100%;
-    max-width: 360px; /* Lebar ideal untuk kalkulator */
+    max-width: 360px; 
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -74,12 +74,12 @@ h1 {
 .equals-btn {
     background-color: #007bff;
     color: white;
-    grid-row: span 2; /* Agar tombol '=' memanjang 2 baris */
+    grid-row: span 2; 
     height: 100%;
 }
 
 .zero {
-    grid-column: span 2; /* Agar tombol '0' memanjang 2 kolom */
+    grid-column: span 2; 
     text-align: left;
     padding-left: 35px;
 }
