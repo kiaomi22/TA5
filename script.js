@@ -206,5 +206,3 @@ document.addEventListener('DOMContentLoaded', () => {
     updateDisplay();
     updateMemoryDisplay();
 });
-
-            

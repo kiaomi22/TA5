@@ -79,7 +79,7 @@ h1 {
 }
 
 .zero {
-    grid-column: span 2; 
+    grid-column: span 2; /* Agar tombol '0' memanjang 2 kolom */
     text-align: left;
     padding-left: 35px;
 }
