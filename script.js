@@ -13,13 +13,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const MAX_HISTORY = 5;
 
     function updateDisplay() {
-        // Tampilkan error jika terjadi pembagian nol atau hasil tidak valid
         if (currentInput === 'Error') {
             display.value = 'Error: Dibagi Nol';
         } else {
-            // Memastikan display tidak melebihi batas (misal 15 digit)
             display.value = currentInput.substring(0, 15);
         }
     }
 
-    
+    function updateHistory(calculation) {
+        history.unshift(calculation); 
+        if (history.length > MAX_HISTORY) {
+            history.pop(); 
+        }
+
+        historyList.innerHTML = history.map(item => `<li>${item}</li>`).join('');
+        if (history.length === 0) {
+            historyList.innerHTML = '<li>Belum ada perhitungan.</li>';
+       }
+   }
+   function inputDigit(digit) {
+    if (waitingForSecondOperand === true) {
+        currentInput = digit;
+        waitingForSecondOperand = false;
+    } else {
+        currentInput = currentInput === '0' ? digit : currentInput + digit;
+    }
+    updateDisplay();
+}
