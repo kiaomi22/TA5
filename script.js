@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', () => {
     const display = document.getElementById('display');
     const historyList = document.getElementById('historyList');
